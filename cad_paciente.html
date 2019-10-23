@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CLIMED</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link
+    href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed|Fredoka+One|Courgette|Lobster|Italianno|Lemonada|Josefin+Slab|Macondo+Swash+Caps&display=swap"
+    rel="stylesheet">
+    <link rel="SHORTCUT ICON" href="Fotos/hospital.png">
+    <link type="text/css" rel="stylesheet" href="css/estilo.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> <!-- Jquery -->
+    <script type="text/javascript" src="main.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="logo" style="font-weight: bold; font-size: 5em; color: #b30000; margin-left:0px !important;">CLIMED</div>
+        <h1 style="text-align: center;">Cadastrar Paciente</h1>
+        <div class="row">
+            <div class="col-md-11" style="font-weight: bold;">
+              <label>Dados do Paciente</label>
+            </div>
+            <form action="cadastro_paciente.php" method="POST">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        Nome do paciente <input type="text" name="nomePaciente" placeholder="Nome do paciente" style="width:100%;">
+                    </div>
+                    <div class="col-md-6">
+                        CEP  <input type="text" name="cepPaciente" placeholder="CEP" style="width: 100%;">
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        CPF <input type="text" name="cpfPaciente" id="cpf" placeholder="CPF" style="width:100%;">
+                    </div>
+                    <div class="col-md-6">
+                        Endereço <input type="text" name="enderecoPaciente" placeholder="Endereço" style="width:100%;">
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        EMAIL <input type="text" name="emailPaciente" placeholder="EMAIL" style="width:100%;">
+                    </div>
+                    
+                    <div class="col-md-6">
+                        Número <input type="text" name="numero" placeholder="Numero" style="width:100%;">
+                    </div>
+                </div>
+                <br>
+            
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        Telefone 1 <input type="text" name="tel" id="tel1" placeholder="Telefone 1" style="width:100%;">
+                    </div>
+                    <div class="col-md-6">  
+                        Complemento <input type="text" name="complemento" placeholder="Complemento" style="width:100%;">
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        Telefone 2 <input type="text" name="te2" id="tel2" placeholder="Telefone 2" style="width:100%;">
+                    </div>
+                    <div class="col-md-6">  
+                        Bairro <input type="text" name="bairro" placeholder="Bairro" style="width:100%;">
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        Data de nascimento <input type="date" name="dtNascimento" id="dtNascimento" placeholder="Data de nascimento" style="width:100%;">
+                    </div>
+                    <div class="col-md-6">  
+                        UF <input type="text" name="uf" placeholder="UF" style="width:100%;">
+                    </div>
+                </div>
+                <hr>
+                <input type="checkbox" id="underAge" name="underAge"> Menor de idade
+                <br>
+                <br>
+                <div class="row justify-content-center" style="display: none;" id="formResponsavel">
+                    <div class="col-md-6">
+                        Nome responsável <input type="text" name="nome_responsavel" placeholder="Nome responsável" style="width:100%;">
+                    </div>
+                    <br>
+                    <div class="col-md-6">  
+                        Telefone responsável <input type="text" name="tel_responsavel" id="tel_responsavel" placeholder="Telefone responsável" style="width:100%;">
+                    </div>
+                </div>
+                <button type="submit" name="acao" class="btn btn-success">Cadastrar</button>
+                <a href="panel_sec.php" style="padding-left: 420px;">VOLTAR</a>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> <!-- Jquery -->
+ 
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

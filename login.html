@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CLIMED</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link
+    href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed|Fredoka+One|Courgette|Lobster|Italianno|Lemonada|Josefin+Slab|Macondo+Swash+Caps&display=swap"
+    rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/estilo.css" />
+    <link rel="SHORTCUT ICON" href="Fotos/hospital.png">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> <!-- Jquery -->
+    <script type="text/javascript" src="main.js"></script>
+    <style type="text/css">
+        
+
+            body{
+
+                background-color:#E6E6FA; 
+            }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="reuna">
+        <div class="wrapper_inside">
+            <div class="logo" style="font-weight: bold; font-size: 5em; color: #b30000">CLIMED</div>
+            <div class="login_wrapper">
+
+                <div class="login_top"><h1>Acessar Sistema CLIMED</h1></div>
+                <hr>
+                <div class="login_middle">
+
+                <form  action="login.php" method="POST">
+                    <div class="row">
+                        <h1>Email</h1>
+                        <input name="email" type="text" placeholder="Email" required><br>
+                    </div>
+                <div class="row">
+                    <h1>Senha</h1>
+                    <input type="password" name="senha" placeholder="Senha" required><br>
+                </div>
+                <div class="row">
+                    <input type="checkbox" name="conect" style="width: 10% !important;"><b>Ficar conectado</b>
+                </div>
+                <button type="submit" value="acao">Acessar</button>
+                </form>
+            </div>
+                <hr>
+            </div>
+            </div>
+        </div>
+
+    </div>
+ 
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
