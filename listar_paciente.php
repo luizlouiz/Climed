@@ -3,13 +3,15 @@ session_start();
 require_once('conn.php');
 require_once('checar.php');
 
+ini_set( 'display_errors', 0 );
+/*
 $sql = $pdo->prepare("SELECT * FROM `pacientes`"); 
 
  $sql->execute(); 
 
  $info = $sql->fetchAll();
 
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -43,12 +45,23 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
         <br>
         <div class="row justify-content-center">
             <div class="col-md-11" style="text-align: center">
+        <?php
+
+        $filtro = $_POST['filterUser']; 
+
+        $consulta = $pdo->prepare("SELECT * FROM `pacientes` WHERE nome LIKE '%$filtro%'"); 
+        $consulta->execute(); 
+
+        $busca = $consulta->fetchAll();
+        ?>
+        <form name="lista" action="listar_paciente.php" method="POST">
                 <input type="text" name="filterUser" placeholder="Buscar pelo nome" style="width: 100%;">
+                <button type="submit" style="position: relative; bottom: 78px;">Buscar</button>
             </div>
         </div>
         <br>
         <div class="row">
-            <table class="table table-hover" id="buscarPaciente" border="4" style="border-color: #A52A2A">
+            <table class="table table-hover" id="buscarPaciente" border="4" style="border-color: #A52A2A; position: relative; bottom: 65px;">
                 <thead class="thead-light">
                   <tr>
                     <th style="width:550px;">NOME</th>
@@ -63,7 +76,7 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
 
                 </thead>
                 <tbody>
-             <?php foreach ($info as $key => $value) {
+             <?php foreach ($busca as $key => $value) {
 
                $id_paciente = $value['id_paciente']; 
                //echo $id_paciente;
@@ -124,9 +137,10 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
 
 
         	?>
-                <a href="<?php echo $voltar ?>">VOLTAR</a>
+                <a href="<?php echo $voltar ?>" style="position: relative; bottom: 60px; left: 40px;">VOLTAR</a>
             </div>
     </div>
+</form>
   <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

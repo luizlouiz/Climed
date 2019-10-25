@@ -24,7 +24,7 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes` WHERE id_paciente = $id;");
 
          $_SESSION['id'] = $value['id_paciente'];
 
-         echo $_SESSION['id'];
+         //echo $_SESSION['id'];
  }
 
 
@@ -105,9 +105,7 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes` WHERE id_paciente = $id;");
                 </div>
                 <br>
                 <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        Data de nascimento <input type="date" name="dtNascimento" id="dtNascimento" value="<?php echo $value['dt_nascimento']?>" style="width:100%;" required>
-                    </div>
+                    
                     <div class="col-md-6">  
                         UF <input type="text" name="uf" value="<?php echo $value['uf']?>" style="width:100%;">
                     </div>
@@ -126,7 +124,7 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes` WHERE id_paciente = $id;");
                     </div>
                 </div>
                 <button type="submit" name="acao" class="btn btn-success">EDITAR</button>
-                <a href="panel_sec.php" style="padding-left: 420px;">VOLTAR</a>
+                <a href="listar_paciente.php" style="position: relative; top: 55px; left: 575px;">VOLTAR</a>
             </form>
         </div>
     </div>

@@ -1,7 +1,8 @@
 <?php
 session_start();
-
+ini_set( 'display_errors', 0 );
 require_once('conn.php');
+require('checar.php');
 
 
 $id = $_GET['id_paciente']; 
@@ -35,7 +36,7 @@ $sql2->execute(array($id,$comentario,$data));
   echo "<Conculta salva com sucesso !";
 }
 
-$sql3 = $pdo->prepare("SELECT descricao_consulta FROM `historico_paciente` WHERE id_paciente = $id");
+$sql3 = $pdo->prepare("SELECT descricao_consulta, registro FROM `historico_paciente` WHERE id_paciente = $id");
 $sql3->execute();
 
 $info = $sql3->fetchAll();
@@ -78,7 +79,17 @@ $info = $sql3->fetchAll();
 
          $value['cpf'] = substr_replace(substr_replace(substr_replace($value['cpf'], '-', 9,0), '.', 6,0), '.', 3,0);
          $value['tel1'] = substr_replace(substr_replace(substr_replace($value['tel1'], '-', 7,0), ')', 2,0), '(', 0,0);
+         $value['tel_responsavel'] = substr_replace(substr_replace(substr_replace($value['tel_responsavel'], '-', 7,0), ')', 2,0), '(', 0,0);
          $value['dt_nascimento'] = date('d/m/Y',  strtotime($value['dt_nascimento']));
+
+         $data = $value['dt_nascimento'];
+
+         list($dia, $mes, $ano) = explode('/', $data);
+         $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+
+         $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano); 
+
+         $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
 
          echo 'CPF:  '.$value['cpf'];
          echo  "</br>";
@@ -87,18 +98,33 @@ $info = $sql3->fetchAll();
          echo 'Telefone: '.$value['tel1'];
          echo  "</br>";
          echo 'Data de Nascimento: '.$value['dt_nascimento'];
+         echo "  || ";
+         echo "Idade: "; print $idade;
          echo  "</br>";echo  "</br>";
          echo 'Endereço: '.$value['endereco']."  ".$value['numero']."  " .$value['complemento']."  " .$value['bairro']."  " .$value['uf'];
+         echo  "</br>";echo  "</br>";
+
+         if($idade <= 15){
+
+ 
+         echo 'Nome do responsável:  '.$value['nome_responsavel'];     
+         echo "<br/>";
+         echo 'Telefone do responsável:  '.$value['tel_responsavel'];  
+
+         $alert = "Paciente menor de idade, registre altura e peso na descrição da consulta !";     
+
+
          
 
-
-
-
-
-
+         echo "<br/>";
+         echo "################################################################################";
+         echo '<h3>'.$alert.'</h3>';
+         echo "################################################################################";
+         }
          ?>
          <hr class="linha">
-         <br/><br/>
+         <br/>
+         
          <label><h3>Faça a descrição da consulta:</h3></label>
          <form name="consulta_paciente" action="panel_paciente.php?id_paciente=<?php echo $id;?>"" method="POST" >
          <textarea name="comentario" style="height: 265px; width: 700px;"></textarea>
@@ -113,8 +139,11 @@ $info = $sql3->fetchAll();
          <label><h3>HISTÓRICO DO PACIENTE:</h3></label>
          <?php
          foreach ($info as $key => $value) {
+
+            $value['registro'] = date('d/m/Y',  strtotime($value['registro']));
  
          echo "<br/>";
+         echo $value['registro'];
          echo $value['descricao_consulta'];
          echo "<hr>";
 

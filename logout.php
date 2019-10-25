@@ -8,6 +8,8 @@ session_start();
 
 $_SESSION['logged_in'] = false; 
 
+
+
 //finaliza a sessão 
 
 session_destroy(); 
