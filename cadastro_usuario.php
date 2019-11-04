@@ -29,6 +29,6 @@ $sql = $pdo->prepare("INSERT INTO `usuarios` (`id_usuario`, `nome`, `cpf`, `rg`,
  echo "inserido com sucesso";  // redirecionar para página de sucesso !!!!!
 }
  
- 
+ header('Location: sucesso_cadastro.php');
 
 ?>

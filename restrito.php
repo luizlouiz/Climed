@@ -37,7 +37,7 @@ require_once('checar.php');
 	</div>
 	<div class="row">
 		<div class="col-md-12" style="text-align: center;">
-			<h3 style="color: #b30000 !important;">Você não possui permissão para acessar esses dados, favor verificar permissões com administrador ! </h3>
+			<h3 style="color: #b30000 !important;">Você não possui permissão para visualizar, favor verificar permissões com administrador ! </h3>
 		</div>
 	</div>
 	

@@ -31,5 +31,7 @@ require_once('checar.php');
 
 
         <h3><a href="cadastro_usuario.html">CADASTRAR USUÁRIO</a></h3>
+
+        <h3><a href="listar_usuarios.php">CONSULTAR USUÁRIOS</a></h3>
     </body>
 </html>

@@ -51,31 +51,7 @@ if(isset($_POST['underAge'])){
 } 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+header('Location: sucesso_cadastro.php');
 
 
 ?>

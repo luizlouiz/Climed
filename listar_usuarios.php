@@ -41,7 +41,7 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
 <body>
     <div class="container">
         <div class="logo" style="font-weight: bold; font-size: 5em; color: #b30000; margin-left:0px !important;">CLIMED</div>
-        <h1 style="text-align: center; font-size: 4em;">Listar Paciente</h1>
+        <h1 style="text-align: center; font-size: 4em;">Listar Usuários</h1>
         <br>
         <div class="row justify-content-center">
             <div class="col-md-11" style="text-align: center">
@@ -49,12 +49,14 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
 
         $filtro = $_POST['filterUser']; 
 
-        $consulta = $pdo->prepare("SELECT * FROM `pacientes` WHERE nome LIKE '$filtro%'"); 
+        $consulta = $pdo->prepare("SELECT u.*, f.nome_func FROM `usuarios` u left join `funcao_usuario` f on u.funcao=f.id_func WHERE nome LIKE '$filtro%'"); 
         $consulta->execute(); 
 
         $busca = $consulta->fetchAll();
+         
         ?>
-        <form name="lista" action="listar_paciente.php" method="POST">
+
+        <form name="lista" action="listar_usuarios.php" method="POST">
                 <input type="text" name="filterUser" placeholder="Buscar pelo nome" style="width: 100%;">
                 <button type="submit" style="position: relative; bottom: 78px;">Buscar</button>
             </div>
@@ -66,9 +68,11 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
                   <tr>
                     <th style="width:550px;">NOME</th>
                     <th style="width:550px;">CPF</th>
+                    <th style="width:550px;">RG</th>
                     <th style="width:550px;">EMAIL</th>
-                    <th style="width:550px;">CADASTRADO EM</th>
-                    <th style="width:550px;">HISTÓRICO</th>
+                    <th style="width:550px;">TELEFONE</th>
+                    <th style="width:50px;">FUNÇÃO</th>
+                    <th style="width:50px;">CADASTRADO EM</th>
                     <th style="width:50px;">EXCLUIR</th>
                     <th style="width:50px;">EDITAR</th>
                     
@@ -76,39 +80,37 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
 
                 </thead>
                 <tbody>
-             <?php foreach ($busca as $key => $value) {
+              <?php foreach ($busca as $key => $value) {
 
-               $id_paciente = $value['id_paciente']; 
-               //echo $id_paciente;
+               echo $value['id_usuario'];
+               $id_usuario = $value['id_usuario'];
                
-               $_SESSION['id_paciente'] = $value['id_paciente'];
+               
+               $_SESSION['id_usuario'] = $value['id_usuario'];
+               
                $value['cpf'] = substr_replace(substr_replace(substr_replace($value['cpf'], '-', 9,0), '.', 6,0), '.', 3,0);
              
 
               ?>
-
+            
                 	<tr>
                 		<td><?php echo $value['nome']; ; ?></td>
                 		<td><?php echo $value['cpf'];  ?></td>
-                		<td><?php echo $value['email'];  ?></td>
+                		<td><?php echo $value['rg'];  ?></td>
+                        <td><?php echo $value['email'];  ?></td>
+                        <td><?php echo $value['telefone'];  ?></td>
+                        <td><?php echo $value['nome_func'];  ?></td>
                 		<td><?php echo date('d/m/Y', strtotime($value['cadastrado_em']));  ?></td>
-                		<?php 
+            <?php 
 
             if($_SESSION['func'] == 2 || $_SESSION['func'] == 3){
 
-            	$visualizar = "restrito.php";
-            	$excluir = "excluir_paciente.php?id_paciente=$id_paciente";
-            	$editar =  "editar_paciente.php?id_paciente=$id_paciente";
+            	
+            	$excluir = "excluir_usuario.php?id_usuario=$id_usuario";
+            	$editar =  "editar_usuario.php?id_usuario=$id_usuario";
             }
-
-            if($_SESSION['func'] == 1 || $_SESSION['func'] == 3){
-
-            	$visualizar = "panel_paciente.php?id_paciente=$id_paciente";
-            }
-
-
         	?>
-                		<td><a href="<?php echo $visualizar ;?>">VISUALIZAR</a></td>
+                		
                 		<td><a href="<?php echo $excluir ;?>"><img src="Fotos/excluir.png" style="width: 30px;"></a></td>
                 		<td><a href="<?php echo $editar ;?>"><img src="Fotos/edit.png" style="width: 30px;"></a></td>
                 	</tr>

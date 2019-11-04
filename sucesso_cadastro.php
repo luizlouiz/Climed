@@ -1,3 +1,28 @@
+<?php
+session_start();
+ 
+require_once('conn.php');
+
+ini_set( 'display_errors', 0 );
+
+if($_SESSION['func'] == 1){
+
+    $panel = "panel_med.php";
+}
+
+if($_SESSION['func'] == 2){
+
+    $panel = "panel_sec.php";
+}
+
+if($_SESSION['func'] == 3){
+
+    $panel = "panel_adm.php";
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +47,7 @@
 
 
  .teste{
-   width: 100px;
-  height: 100px;
+  
   background: transparent;
   position :relative;
  	animation: animate 3s;
@@ -44,10 +68,10 @@
 
   
   <div class="teste">
- <h1 style="color: #b56d5b ">SUCESSO!</h1>
+ <h1 style="color: #b56d5b ">INSERIDO COM SUCESSO!</h1>
  </div> 
  
- <h4><a href="listar_paciente.php" style="position: relative; height: 100px; left: 100px; background-color:#A52A2A; color: #ffff;">VOLTAR</a></h4>
+ <h4><a href=<?php echo $panel;?> style="position: relative; height: 100px; right: 230px; top: 100px; background-color:#A52A2A; color: #ffff;">VOLTAR</a></h4>
    
 </body>
 </html>

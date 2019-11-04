@@ -32,6 +32,6 @@ if($sql->execute()){
 }
 
 
-
+header('Location: sucesso.html');
 
 ?>
