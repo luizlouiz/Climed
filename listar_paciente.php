@@ -71,6 +71,7 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
                     <th style="width:550px;">HISTÓRICO</th>
                     <th style="width:50px;">EXCLUIR</th>
                     <th style="width:50px;">EDITAR</th>
+                    <th style="width:50px;">AGENDAR CONSULTA</th>
                     
                   </tr>
 
@@ -99,6 +100,7 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
             	$visualizar = "restrito.php";
             	$excluir = "excluir_paciente.php?id_paciente=$id_paciente";
             	$editar =  "editar_paciente.php?id_paciente=$id_paciente";
+                $agendar = "agendar_consulta.php?id_paciente=$id_paciente";
             }
 
             if($_SESSION['func'] == 1 || $_SESSION['func'] == 3){
@@ -111,6 +113,7 @@ $sql = $pdo->prepare("SELECT * FROM `pacientes`");
                 		<td><a href="<?php echo $visualizar ;?>">VISUALIZAR</a></td>
                 		<td><a href="<?php echo $excluir ;?>"><img src="Fotos/excluir.png" style="width: 30px;"></a></td>
                 		<td><a href="<?php echo $editar ;?>"><img src="Fotos/edit.png" style="width: 30px;"></a></td>
+                        <td><a href="<?php echo $agendar ;?>"><img src="Fotos/agenda.png" style="width: 40px;"></a></td>
                 	</tr>
                  
                 </tbody>
