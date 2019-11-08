@@ -36,7 +36,7 @@ $_SESSION['id_paciente'] = $id_paciente;
 				<div class="form-group">
 					<label for="data" class="col-sm-2 control-label">Data e Hora</label>
 					<div class="col-sm-10">
-						<div class="input-group date data_formato" data-date-format="dd/mm/yyyy HH:ii:ss">
+						<div class="input-group date data_formato" data-date-format="dd/mm/yyyy HH:ii">
 							<input type="text" class="form-control" name="data" placeholder="Data da visita" required>
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-th"></span>
@@ -46,7 +46,7 @@ $_SESSION['id_paciente'] = $id_paciente;
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-success">Cadastrar</button>
+						<button type="submit" class="btn btn-success">Agendar</button>
 						<a href="listar_paciente.php" style="position: relative; bottom: -10px; left: 5px;">VOLTAR</a>
 					</div>
 				</div>

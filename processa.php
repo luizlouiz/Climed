@@ -22,10 +22,10 @@ $resultado_data = mysqli_query($conn, $result_data);
 
 //Verificar se salvou no banco de dados através "mysqli_insert_id" o qual verifica se existe o ID do último dado inserido
 if(mysqli_insert_id($conn)){
-	$_SESSION['msg'] = "<div class='alert alert-success'> Data cadastrada com sucesso </div>";
+	$_SESSION['msg'] = "<div class='alert alert-success'> Consulta agendada com sucesso </div>";
 	header("Location:  agendar_consulta.php?id_paciente=$id_paciente");
 }else{
-	$_SESSION['msg'] = "<div class='alert alert-danger'> Erro ao cadastradar a data </div>";
+	$_SESSION['msg'] = "<div class='alert alert-danger'> Erro ao agendar a data </div>";
 	header("Location: agendar_consulta.php?id_paciente=$id_paciente");
 }
 
